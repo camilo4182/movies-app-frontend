@@ -1,0 +1,42 @@
+I, [2021-05-15T12:25:12.025572 #6580]  INFO -- : Registered expected interaction DELETE /animals/Pelusa
+D, [2021-05-15T12:25:12.026576 #6580] DEBUG -- : {
+  "description": "a request to delete an animal",
+  "providerState": "delete an animal",
+  "request": {
+    "method": "DELETE",
+    "path": "/animals/Pelusa"
+  },
+  "response": {
+    "status": 204,
+    "headers": {
+    }
+  },
+  "metadata": null
+}
+I, [2021-05-15T12:25:12.064013 #6580]  INFO -- : Received OPTIONS request for mock service administration endpoint DELETE /animals/Pelusa. Returning CORS headers: {"Access-Control-Allow-Origin"=>"http://localhost", "Access-Control-Allow-Headers"=>"*", "Access-Control-Allow-Methods"=>"DELETE, POST, GET, HEAD, PUT, TRACE, CONNECT, PATCH"}.
+I, [2021-05-15T12:25:12.089794 #6580]  INFO -- : Received request DELETE /animals/Pelusa
+D, [2021-05-15T12:25:12.090673 #6580] DEBUG -- : {
+  "path": "/animals/Pelusa",
+  "query": "",
+  "method": "delete",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost/",
+    "User-Agent": "Mozilla/5.0 (win32) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.5.1",
+    "Accept-Language": "en",
+    "Origin": "http://localhost",
+    "Host": "localhost:8080",
+    "Accept-Encoding": "gzip, deflate",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-05-15T12:25:12.093040 #6580]  INFO -- : Found matching response for DELETE /animals/Pelusa
+D, [2021-05-15T12:25:12.093040 #6580] DEBUG -- : {
+  "status": 204,
+  "headers": {
+  }
+}
+I, [2021-05-15T12:25:12.124193 #6580]  INFO -- : Verifying - interactions matched
+I, [2021-05-15T12:25:12.144294 #6580]  INFO -- : Cleared interactions
+I, [2021-05-15T12:25:12.157627 #6580]  INFO -- : Merging interactions into pact for AnimalShelterBack at C:/Users/Johan/animal-shelter-ui/test/contract/pacts/animalshelterfront-animalshelterback.json
