@@ -6,14 +6,9 @@ export const MoviesController = {
             method: 'POST',
             baseURL: process.env.API,
             url: 'movies',
-            data: movie
-        });
-    },
-    update(movie_title, movie){
-        return axios({
-            method: 'PUT',
-            baseURL: process.env.API,
-            url: `movies/${movie_title}`,
+            headers:{
+                'Content-Type': 'application/json'
+            },
             data: movie
         });
     },
@@ -24,11 +19,32 @@ export const MoviesController = {
             url: 'movies'
         });
     },
-    delete(movie_title) {
+    delete(title) {
         return axios({
             method: 'DELETE',
             baseURL: process.env.API,
-            url: `movies/${movie_title}`
+            url: `movies/${title}`
+        });
+    },
+    get(title) {
+        return axios({
+            method: 'GET',
+            baseURL: process.env.API,
+            url: `movies/${title}`,
+            headers:{
+                'Content-Type': 'application/json'
+            },
+        });
+    },
+    update(title, movie){
+        return axios({
+            method: 'PUT',
+            baseURL: process.env.API,
+            url: `movies/${title}`,
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            data: movie
         });
     }
 }

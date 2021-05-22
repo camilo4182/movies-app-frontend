@@ -18,6 +18,9 @@ describe('Movie service', () => {
                 withRequest: {
                     method: 'PUT',
                     path: `/movies/${movie_title}`,
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
                     body: movie
                 },
                 willRespondWith: {
@@ -27,7 +30,7 @@ describe('Movie service', () => {
                     },
                     body: Matchers.somethingLike(
                         {
-                            title: Matchers.like('Los Vengadores'),
+                            title: Matchers.like('The Avengers'),
                             description: Matchers.like("Superheroes movie"),
                             director: Matchers.like("Marvel")
                         }

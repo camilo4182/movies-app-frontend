@@ -14,7 +14,7 @@ describe('Movie service', () => {
                     path: `/movies/${movie_title}`
                 },
                 willRespondWith: {
-                    status: 204
+                    status: 200
                 }
             });
         });

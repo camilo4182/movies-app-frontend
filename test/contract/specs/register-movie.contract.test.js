@@ -17,10 +17,13 @@ describe('Movie service', () => {
                 withRequest: {
                     method: 'POST',
                     path: '/movies',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
                     body: movie
                 },
                 willRespondWith: {
-                    status: 201,
+                    status: 200,
                     headers:{
                         'Content-Type': 'application/json'
                     },
