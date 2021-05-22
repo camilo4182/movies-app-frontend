@@ -9,11 +9,12 @@ export const MoviesController = {
             data: movie
         });
     },
-    update(movie_title){
+    update(movie_title, movie){
         return axios({
             method: 'PUT',
             baseURL: process.env.API,
-            url: `movies/${movie_title}`
+            url: `movies/${movie_title}`,
+            data: movie
         });
     },
     list() {

@@ -1,17 +1,17 @@
-import {provider} from '../specs/init-pact';
-import {AnimalController} from '../../../controllers';
+import {provider} from './init-pact';
+import {MoviesController} from '../../../src/controllers';
 import {Matchers} from '@pact-foundation/pact';
 
-describe('Animal Service', () => {
-    describe('When a request to list all animals is made', () => {
+describe('Movie Service', () => {
+    describe('When a request to list all movies is made', () => {
         beforeAll(async () => {
             await provider.setup();
             await provider.addInteraction({
-                state: "list animals",
-                uponReceiving: 'a request to list all animals',
+                state: "list movies",
+                uponReceiving: 'a request to list all movies',
                 withRequest: {
                     method: 'GET',
-                    path: '/animals'
+                    path: '/movies'
                 },
                 willRespondWith: {
                     status: 200,
@@ -20,10 +20,9 @@ describe('Animal Service', () => {
                     },
                     body: Matchers.eachLike(
                         {
-                            name: Matchers.like('manchas'),
-                            breed: Matchers.like("Bengali"),
-                            gender: Matchers.like("Female"),
-                            vaccinated: Matchers.boolean(true)
+                            title: Matchers.like('Star Wars Episode IV'),
+                            description: Matchers.like("A new hope"),
+                            director: Matchers.like("George Lucas")
                         }
                     )
                 }
@@ -31,7 +30,7 @@ describe('Animal Service', () => {
         });
 
         test('should return the correct data', async () => {
-            const response = await AnimalController.list();
+            const response = await MoviesController.list();
             expect(response.data).toMatchSnapshot();
             await provider.verify()
         });

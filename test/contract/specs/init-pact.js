@@ -1,8 +1,8 @@
 import { Pact } from "@pact-foundation/pact";
 import path from "path";
 
-const consumerName = 'AnimalShelterFront';
-const providerName = 'AnimalShelterBack';
+const consumerName = 'MoviesAppFront';
+const providerName = 'MoviesAppBack';
 
 export const provider = new Pact({
     consumer: consumerName,

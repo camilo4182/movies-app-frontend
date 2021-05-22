@@ -1,1 +1,1 @@
-export * from './AnimalsController';
+export * from './MoviesController';

@@ -1,17 +1,17 @@
-import {provider} from "../specs/init-pact";
-import {AnimalController} from "../../../controllers";
+import {provider} from './init-pact';
+import {MoviesController} from '../../../src/controllers';
 
-describe('Given an animal service', () => {
-    describe('When a request to delete an animal is made', () => {
-        const animal_name = "Pelusa";
+describe('Movie service', () => {
+    describe('When a request to delete a movie is made', () => {
+        const movie_title = "Cars";
         beforeAll(async () => {
             await provider.setup();
             await provider.addInteraction({
-                state: 'delete an animal',
-                uponReceiving: 'a request to delete an animal',
+                state: 'delete a movie',
+                uponReceiving: 'a request to delete a movie',
                 withRequest: {
                     method: 'DELETE',
-                    path: `/animals/${animal_name}`
+                    path: `/movies/${movie_title}`
                 },
                 willRespondWith: {
                     status: 204
@@ -20,7 +20,7 @@ describe('Given an animal service', () => {
         });
 
         it('Then it should return the right http code', async () => {
-            const response = await AnimalController.delete(animal_name);
+            const response = await MoviesController.delete(movie_title);
             expect(response.data).toMatchSnapshot();
             await provider.verify();
         });
