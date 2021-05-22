@@ -45,7 +45,6 @@ class RegisterMovie extends Component {
     };
 
     render() {
-        const {item} = this.state;
         const title = <h2>Add Client</h2>;
     
         return <div>
