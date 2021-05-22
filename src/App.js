@@ -3,16 +3,18 @@ import './App.css';
 import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MoviesList from './MoviesList';
-import MovieEdit from "./MovieEdit";
+import MovieEdit from './MovieEdit';
+import RegisterMovie from './RegisterMovie';
 
 class App extends Component {
   render() {
     return (
         <Router>
           <Switch>
-            <Route path='/' exact={true} component={Home}/>
-            <Route path='/movies' exact={true} component={MoviesList}/>
-            <Route path='/movies/:id' component={MovieEdit}/>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/movies' component={MoviesList}/>
+            <Route exact path='/movies/new/register' component={RegisterMovie}/>
+            <Route path='/movies/:title' component={MovieEdit}/>
           </Switch>
         </Router>
     )

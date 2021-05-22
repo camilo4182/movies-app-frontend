@@ -17,15 +17,15 @@ class MoviesList extends Component {
             .then(data => this.setState({movies: data}));
     }
 
-    async remove(id) {
-        await fetch(`/movies/${id}`, {
+    async remove(title) {
+        await fetch(`/movies/${title}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         }).then(() => {
-            let updatedMovies = [...this.state.movies].filter(i => i.id !== id);
+            let updatedMovies = [...this.state.movies].filter(i => i.title !== title);
             this.setState({movies: updatedMovies});
         });
     }
@@ -40,8 +40,8 @@ class MoviesList extends Component {
                 <td>{movie.director}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/movies/" + movie.id}>Edit</Button>
-                        <Button size="sm" color="danger" onClick={() => this.remove(movie.id)}>Delete</Button>
+                        <Button size="sm" color="primary" tag={Link} to={`/movies/${movie.title}`}>Edit</Button>
+                        <Button size="sm" color="danger" onClick={() => this.remove(movie.title)}>Delete</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -52,7 +52,7 @@ class MoviesList extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/movies/new">Add Movie</Button>
+                        <Button color="success" tag={Link} to="/movies/new/register">Add Movie</Button>
                     </div>
                     <h3>Movies</h3>
                     <Table className="mt-4">

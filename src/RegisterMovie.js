@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavBar';
 
-class MovieEdit extends Component {
+class RegisterMovie extends Component {
 
     emptyItem = {
         title: '',
@@ -20,13 +20,6 @@ class MovieEdit extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
-    async componentDidMount() {
-        if (this.props.match.params.title !== 'new') {
-            const movie = await (await fetch(`/movies/${this.props.match.params.title}`)).json();
-            this.setState({item: movie});
-        }
-    };
-
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -40,8 +33,8 @@ class MovieEdit extends Component {
         event.preventDefault();
         const {item} = this.state;
     
-        await fetch('/movies/' + item.title, {
-            method: 'PUT',
+        await fetch('/movies', {
+            method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -53,7 +46,7 @@ class MovieEdit extends Component {
 
     render() {
         const {item} = this.state;
-        const title = <h2>Edit Client</h2>;
+        const title = <h2>Add Client</h2>;
     
         return <div>
             <AppNavbar/>
@@ -62,21 +55,21 @@ class MovieEdit extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="title">Title</Label>
-                        <Input type="text" name="title" id="title" value={item.title}
+                        <Input type="text" name="title" id="title"
                                onChange={this.handleChange} autoComplete="title"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="description">Description</Label>
-                        <Input type="text" name="description" id="description" value={item.description}
+                        <Input type="text" name="description" id="description"
                                onChange={this.handleChange} autoComplete="description"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="director">Director</Label>
-                        <Input type="text" name="director" id="director" value={item.director}
+                        <Input type="text" name="director" id="director"
                                onChange={this.handleChange} autoComplete="director"/>
                     </FormGroup>
                     <FormGroup>
-                        <Button color="primary" type="submit">Save</Button>{' '}
+                        <Button color="primary" type="submit">Register</Button>{' '}
                         <Button color="secondary" tag={Link} to="/movies">Cancel</Button>
                     </FormGroup>
                 </Form>
@@ -84,4 +77,4 @@ class MovieEdit extends Component {
         </div>
     }
 }
-export default withRouter(MovieEdit);
+export default withRouter(RegisterMovie);
