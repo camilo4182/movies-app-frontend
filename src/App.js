@@ -13,8 +13,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/movies' component={MoviesList}/>
-            <Route exact path='/movies/new/register' component={RegisterMovie}/>
-            <Route path='/movies/:title' component={MovieEdit}/>
+            <Route exact path='/new' component={RegisterMovie}/>
+            <Route path='/:title' component={MovieEdit}/>
           </Switch>
         </Router>
     )

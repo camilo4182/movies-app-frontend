@@ -2,29 +2,38 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavBar';
+import { MoviesController } from './controllers'
 
 class MovieEdit extends Component {
 
-    emptyItem = {
+    /**emptyItem = {
         title: '',
         description: '',
         director: ''
-    };
+    };*/
 
     constructor(props) {
         super(props);
         this.state = {
-            item: this.emptyItem
+            item: {
+                title: '',
+                description: '',
+                director: ''
+            }
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     async componentDidMount() {
-        if (this.props.match.params.title !== 'new') {
+        /**if (this.props.match.params.title !== 'new') {
             const movie = await (await fetch(`/movies/${this.props.match.params.title}`)).json();
             this.setState({item: movie});
-        }
+        }*/
+        console.log(this.props.match.params.title);
+        const movie = await MoviesController.get(this.props.match.params.title);
+        console.log(movie);
+        this.setState({item: movie.data});
     };
 
     handleChange(event) {
@@ -40,14 +49,15 @@ class MovieEdit extends Component {
         event.preventDefault();
         const {item} = this.state;
     
-        await fetch('/movies/' + item.title, {
+        /**await fetch('/movies/' + item.title, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(item),
-        });
+        });*/
+        await MoviesController.update(this.props.match.params.title, item);
         this.props.history.push('/movies');
     };
 
@@ -62,17 +72,17 @@ class MovieEdit extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="title">Title</Label>
-                        <Input type="text" name="title" id="title" value={item.title}
+                        <Input type="text" name="title" id="title" value={item.title || ''}
                                onChange={this.handleChange} autoComplete="title"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="description">Description</Label>
-                        <Input type="text" name="description" id="description" value={item.description}
+                        <Input type="text" name="description" id="description" value={item.description || ''}
                                onChange={this.handleChange} autoComplete="description"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="director">Director</Label>
-                        <Input type="text" name="director" id="director" value={item.director}
+                        <Input type="text" name="director" id="director" value={item.director || ''}
                                onChange={this.handleChange} autoComplete="director"/>
                     </FormGroup>
                     <FormGroup>

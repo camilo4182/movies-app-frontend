@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavBar';
+import { MoviesController } from './controllers'
 
 class RegisterMovie extends Component {
 
@@ -33,14 +34,15 @@ class RegisterMovie extends Component {
         event.preventDefault();
         const {item} = this.state;
     
-        await fetch('/movies', {
+        /**await fetch('/movies', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(item),
-        });
+        });*/
+        await MoviesController.register(item);
         this.props.history.push('/movies');
     };
 
