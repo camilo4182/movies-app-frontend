@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Service When a request to list all movies is made should return the correct data 1`] = `
+Array [
+  Object {
+    "description": "A new hope",
+    "director": "George Lucas",
+    "title": "Star Wars Episode IV",
+  },
+]
+`;

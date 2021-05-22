@@ -29,4 +29,3 @@ yarn-error.log*
 # contract
 test/contract/logs
 test/contract/pacts
-test/contract/specs/__snapshots__

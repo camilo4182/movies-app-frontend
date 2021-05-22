@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie service When a request to register a movie is made Then it should return the right data 1`] = `
+Object {
+  "description": "Desc 1",
+  "director": "Dir 1",
+  "title": "Matrix",
+}
+`;
